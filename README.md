@@ -27,13 +27,23 @@ Antes de começar, certifique-se de ter o **Node.js** versão **18 ou superior**
 
 Após a instalação, você pode verificar se o Node.js e o npm foram instalados corretamente utilizando os seguintes comandos no terminal:
 
+```bash
 node -v
 npm -v
-
+```
 ## Passos para instalação 🛠️
 
 1. Clone o repositório para sua máquina local:
+```bash
+git clone https://github.com/sueniasantos/task-manager.git
+```
 2. Instale as dependências do projeto com o npm:
+```bash
+npm install
+```
 4. Após a instalação das dependências, inicie o servidor de desenvolvimento:
+```bash
+ng serve
+```
 
 A aplicação estará disponível em http://localhost:4200/ 🌍.
