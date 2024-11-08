@@ -1,0 +1,23 @@
+<h2 mat-dialog-title class="text-xl font-semibold text-gray-800">Deletar Tarefa</h2>
+
+<mat-dialog-content class="py-4 text-gray-600">
+  <p class="text-base">Tem certeza de que deseja excluir a tarefa: <strong>{{ data.title }}</strong>?</p>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex justify-end space-x-4 p-4">
+  <button
+    mat-button
+    (click)="onCancel()"
+    class="px-4 py-2  ms-3 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors duration-200"
+  >
+    Não
+  </button>
+
+  <button
+    mat-button
+    (click)="onConfirm()"
+    class="px-4 py-2 text-white bg-red-600 rounded-lg hover:bg-red-100 transition-colors duration-200"
+  >
+    Sim
+  </button>
+</mat-dialog-actions>

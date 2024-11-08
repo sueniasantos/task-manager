@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Editar Tarefa</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editTaskForm">
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Descrição</mat-label>
+      <input matInput formControlName="description" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status" required>
+        <mat-option value="Pendente">Pendente</mat-option>
+        <mat-option value="Em andamento">Em andamento</mat-option>
+        <mat-option value="Concluído">Concluído</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="!editTaskForm.valid">Salvar</button>
+</div>
