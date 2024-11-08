@@ -2,6 +2,8 @@
 
 Este é um aplicativo de gerenciamento de tarefas desenvolvido com Angular. Ele permite aos usuários criar, editar, excluir e visualizar tarefas, além de filtrar tarefas por status.
 
+![Screenshot da aplicação](src\assets\images\screenshot.png)
+
 ## Funcionalidades 🚀
 
 - **Pesquisar tarefas**: Pesquisar tarefas pelo título 🔍.
