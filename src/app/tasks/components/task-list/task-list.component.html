@@ -46,51 +46,50 @@
     Nenhuma tarefa encontrada.
   </div>
 
-  <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 rounded"
+  <div *ngIf="filteredTasks.length > 0" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 rounded"
     style="background-color: #633EBB;">
-    <mat-card *ngFor="let task of filteredTasks"
-      class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer">
-      <div class="flex justify-between items-center">
-        <mat-card-title [ngClass]="{'line-through text-gray-400': task.status === 'Concluído'}"
-        class="text-xl font-semibold text-gray-800 sm:text-lg md:text-xl lg:text-2xl">
+  <mat-card *ngFor="let task of filteredTasks"
+    class="p-6 bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+    <div class="flex justify-between items-center">
+      <mat-card-title [ngClass]="{'line-through text-gray-400': task.status === 'Concluído'}"
+        class="text-xl font-semibold  text-gray-800 sm:text-lg md:text-xl lg:text-2xl ps-3">
         {{ task.title }}
       </mat-card-title>
       <button mat-icon-button [matMenuTriggerFor]="menu" class="ml-4">
         <mat-icon>more_vert</mat-icon>
       </button>
+    </div>
 
-      </div>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openTaskDetailsDialog(task)">
+        Visualizar Detalhes
+      </button>
+    </mat-menu>
 
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="openTaskDetailsDialog(task)">
-          Visualizar Detalhes
-        </button>
-      </mat-menu>
+    <mat-card-content class="text-gray-600">
+      <p class="text-sm" [ngClass]="{'line-through text-gray-400': task.status === 'Concluído'}">{{ task.description }}</p>
+      <p class="mt-2">
+        <strong>Status:</strong>
+        <span [ngClass]="{
+            'bg-red-100 text-black': task.status === 'Pendente',
+            'bg-orange-100 text-black': task.status === 'Em andamento',
+            'bg-green-100 text-black': task.status === 'Concluído'
+          }" class="px-4 py-2 ms-1 rounded-full text-xs font-semibold">
+          {{ task.status }}
+        </span>
+      </p>
+    </mat-card-content>
 
-      <mat-card-content class="text-gray-600">
-        <p class="text-sm" [ngClass]="{'line-through text-gray-400': task.status === 'Concluído'}">{{ task.description }}</p>
-        <p class="mt-2">
-          <strong>Status:</strong>
-          <span [ngClass]="{
-              'bg-red-100 text-black': task.status === 'Pendente',
-              'bg-orange-100 text-black': task.status === 'Em andamento',
-              'bg-green-100 text-black': task.status === 'Concluído'
-            }" class="px-4 py-2 ms-1 rounded-full text-xs font-semibold">
-            {{ task.status }}
-          </span>
-        </p>
-      </mat-card-content>
-
-      <mat-card-actions class="mt-4 flex justify-between">
-        <button mat-button color="primary" (click)="openEditTaskDialog(task)"
-          class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-100 transition duration-200">
-          Editar
-        </button>
-        <button mat-button color="warn" (click)="openDeleteTaskDialog(task)"
-          class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-100 transition duration-200">
-          Deletar
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+    <mat-card-actions class="mt-4 flex justify-between">
+      <button mat-button color="primary" (click)="openEditTaskDialog(task)"
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-100 transition duration-200">
+        Editar
+      </button>
+      <button mat-button color="warn" (click)="openDeleteTaskDialog(task)"
+        class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-100 transition duration-200">
+        Deletar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 </div>
